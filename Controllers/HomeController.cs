@@ -26,5 +26,13 @@ namespace SocialLoginWithoutIdentity.Controllers
 
             return View();
         }
+
+        [Authorize]
+        public ActionResult Secure()
+        {
+            ViewBag.Message = "Secure page.";
+
+            return View();
+        }
     }
 }

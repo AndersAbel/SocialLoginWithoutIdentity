@@ -10,19 +10,19 @@ using Microsoft.Owin.Security.Google;
 
 namespace SocialLoginWithoutIdentity
 {
-	public partial class Startup
-	{
-		private void ConfigureAuth(IAppBuilder app)
+    public partial class Startup
+    {
+        private void ConfigureAuth(IAppBuilder app)
         {
-			const string authenticationType = "ApplicationCookie";
+            const string authenticationType = "ApplicationCookie";
 
             app.UseCookieAuthentication(new CookieAuthenticationOptions
                 {
-					AuthenticationType = authenticationType,
-					LoginPath = new PathString("/Account/Login")
+                    AuthenticationType = authenticationType,
+                    LoginPath = new PathString("/Account/Login")
                 });
 
-			app.SetDefaultSignInAsAuthenticationType(authenticationType);
+            app.SetDefaultSignInAsAuthenticationType(authenticationType);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
                 {
@@ -30,5 +30,5 @@ namespace SocialLoginWithoutIdentity
                     ClientSecret = GoogleClientSecret
                 });
         }
-	}
+    }
 }

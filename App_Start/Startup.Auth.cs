@@ -14,15 +14,14 @@ namespace SocialLoginWithoutIdentity
     {
         private void ConfigureAuth(IAppBuilder app)
         {
-            const string authenticationType = "ApplicationCookie";
-
-            app.UseCookieAuthentication(new CookieAuthenticationOptions
+            var cookieOptions = new CookieAuthenticationOptions
                 {
-                    AuthenticationType = authenticationType,
                     LoginPath = new PathString("/Account/Login")
-                });
+                };
 
-            app.SetDefaultSignInAsAuthenticationType(authenticationType);
+            app.UseCookieAuthentication(cookieOptions);
+
+            app.SetDefaultSignInAsAuthenticationType(cookieOptions.AuthenticationType);
 
             app.UseGoogleAuthentication(new GoogleOAuth2AuthenticationOptions
                 {
